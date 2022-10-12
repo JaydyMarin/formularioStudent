@@ -4,13 +4,33 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import {AngularFireModule} from '@angular/fire/compat';
+import {AngularFireAuthModule} from '@angular/fire/compat/auth';
+import {AngularFirestoreModule} from '@angular/fire/compat/firestore'
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { ShowComponent } from './components/show/show.component';
+import { CreateComponent } from './components/create/create.component';
+import { EditComponent } from './components/edit/edit.component'
+import { Form } from '@angular/forms';
+
+import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ShowComponent,
+    CreateComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
